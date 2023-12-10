@@ -7,7 +7,6 @@ import { winningMoves } from "./Moves";
 function App() {
   const [boards, setBoards] = useState(Array(9).fill(null));
   const [isX, setIsX] = useState("X");
-  // const [winColor, setWinColor] = useState("");
   const [gameOver, setGameOver] = useState(false);
 
   const showMove1 = (id) => {
@@ -41,7 +40,13 @@ function App() {
             setGameOver(true);
             console.log("O wins the game!");
           }
+          return;
         }
+      }
+      const boardIsFilled = board.every((board) => board !== null);
+      if (boardIsFilled) {
+        setGameOver(true);
+        console.log("Draw!!!");
       }
     };
     checkWinner(boards);

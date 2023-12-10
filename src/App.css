@@ -13,3 +13,6 @@ main {
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
 }
+.blue {
+  background-color: blue;
+}
