@@ -1,0 +1,9 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.mainBoardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 180px);
+  grid-template-rows: repeat(3, 180px);
+}
