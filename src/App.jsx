@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { Board } from "./components/board/Board";
+import { winningMoves } from "./Moves";
 
 function App() {
   const [boards, setBoards] = useState(Array(9).fill(null));
   const [isX, setIsX] = useState("X");
   // const [winColor, setWinColor] = useState("");
-  // const [gameOver, setGameOver] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   const showMove1 = (id) => {
+    if (gameOver) {
+      return;
+    }
     const array = [...boards];
     if (array[id] !== null) {
       return;
@@ -20,34 +24,27 @@ function App() {
     } else {
       setIsX("X");
     }
+    console.log(id);
   };
 
   useEffect(() => {
-    const winningMoves = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
     const checkWinner = (board) => {
       for (let i = 0; i < winningMoves.length; i++) {
         const [a, b, c] = winningMoves[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
           console.log("Game over!");
           if (board[a] === "X") {
+            setGameOver(true);
             console.log("X wins the game!");
           } else {
+            setGameOver(true);
             console.log("O wins the game!");
           }
         }
       }
     };
     checkWinner(boards);
-  }, [boards, isX]);
+  }, [boards]);
 
   return (
     <>
