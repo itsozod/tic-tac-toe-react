@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from "./Restart.module.css";
 export const Restart = ({ onClick }) => {
   return (
