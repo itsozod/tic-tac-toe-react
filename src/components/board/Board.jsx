@@ -4,7 +4,12 @@ import styles from "./Board.module.css";
 export const Board = ({ value, onClick }) => {
   return (
     <div className={styles.board} onClick={onClick}>
-      {value}
+      <p
+        style={{ color: value === "X" ? "red" : "green" }}
+        className={styles.weapon}
+      >
+        {value}
+      </p>
     </div>
   );
 };

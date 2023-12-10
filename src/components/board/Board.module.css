@@ -6,3 +6,8 @@
   background-color: lightcoral;
   cursor: pointer;
 }
+.weapon {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px orange;
+}
