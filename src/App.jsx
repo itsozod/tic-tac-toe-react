@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import { Header } from "./components/header/Header";
 import { Board } from "./components/board/Board";
 import { winningMoves } from "./Moves";
 
@@ -48,11 +49,14 @@ function App() {
 
   return (
     <>
-      <div className="mainBoardContainer">
-        {boards.map((board, id) => (
-          <Board key={id} onClick={() => showMove1(id)} value={board} />
-        ))}
-      </div>
+      <Header />
+      <main>
+        <div className="mainBoardContainer">
+          {boards.map((board, id) => (
+            <Board key={id} onClick={() => showMove1(id)} value={board} />
+          ))}
+        </div>
+      </main>
     </>
   );
 }

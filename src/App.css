@@ -2,8 +2,14 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
 .mainBoardContainer {
   display: grid;
-  grid-template-columns: repeat(3, 180px);
-  grid-template-rows: repeat(3, 180px);
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
 }
