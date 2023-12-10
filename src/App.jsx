@@ -3,6 +3,7 @@ import "./App.css";
 import { Header } from "./components/header/Header";
 import { Board } from "./components/board/Board";
 import { Result } from "./components/result/Result";
+import { Restart } from "./components/restart/Restart";
 import { winningMoves } from "./Moves";
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
           ))}
         </div>
         <Result result={result} />
+        <Restart />
       </main>
     </>
   );
