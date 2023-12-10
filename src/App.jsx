@@ -8,6 +8,7 @@ import { winningMoves } from "./Moves";
 function App() {
   const [boards, setBoards] = useState(Array(9).fill(null));
   const [isX, setIsX] = useState("X");
+  const [result, setResult] = useState("Start the game!");
   const [gameOver, setGameOver] = useState(false);
 
   const showMove1 = (id) => {
@@ -22,8 +23,10 @@ function App() {
     setBoards(array);
     if (array[id] === "X") {
       setIsX("O");
+      setResult("Next player: O");
     } else {
       setIsX("X");
+      setResult("Next player: X");
     }
     console.log(id);
   };
@@ -36,10 +39,10 @@ function App() {
           console.log("Game over!");
           if (board[a] === "X") {
             setGameOver(true);
-            console.log("X wins the game!");
+            setResult("X wins the game!");
           } else {
             setGameOver(true);
-            console.log("O wins the game!");
+            setResult("O wins the game!");
           }
           return;
         }
@@ -47,7 +50,7 @@ function App() {
       const boardIsFilled = board.every((board) => board !== null);
       if (boardIsFilled) {
         setGameOver(true);
-        console.log("Draw!!!");
+        setResult("Draw!!!");
       }
     };
     checkWinner(boards);
@@ -62,7 +65,7 @@ function App() {
             <Board key={id} onClick={() => showMove1(id)} value={board} />
           ))}
         </div>
-        <Result result={"Start the game!!!"} />
+        <Result result={result} />
       </main>
     </>
   );
