@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import styles from "./Board.module.css";
+import { memo } from "react";
 
-export const Board = ({ value, onClick }) => {
+export const Board = memo(function Board({ value, onClick }) {
   return (
     <div className={styles.board} onClick={onClick}>
       <p
@@ -12,4 +13,4 @@ export const Board = ({ value, onClick }) => {
       </p>
     </div>
   );
-};
+});

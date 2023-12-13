@@ -29,6 +29,7 @@ function App() {
     refresh();
   }, []);
   const showMove1 = (id) => {
+    console.log("Rendered!!!");
     if (gameOver) {
       return;
     }
@@ -50,6 +51,11 @@ function App() {
 
   useEffect(() => {
     const checkWinner = (board) => {
+      const boardsNotClicked = board.every((board) => board === null);
+      if (boardsNotClicked) {
+        return;
+      }
+      console.log("Rendered!");
       for (let i = 0; i < winningMoves.length; i++) {
         const [a, b, c] = winningMoves[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
