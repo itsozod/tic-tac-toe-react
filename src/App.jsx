@@ -49,10 +49,6 @@ function App() {
   };
 
   const checkWinner = (board) => {
-    const boardsNotClicked = board.every((board) => board === null);
-    if (boardsNotClicked) {
-      return;
-    }
     console.log("Rendered!");
     for (let i = 0; i < winningMoves.length; i++) {
       const [a, b, c] = winningMoves[i];
@@ -76,6 +72,10 @@ function App() {
   };
 
   useEffect(() => {
+    const boardsNotClicked = boards.every((board) => board === null);
+    if (boardsNotClicked) {
+      return;
+    }
     checkWinner(boards);
   }, [boards]);
 
