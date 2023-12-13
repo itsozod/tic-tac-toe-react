@@ -29,7 +29,6 @@ function App() {
     refresh();
   }, []);
   const showMove1 = (id) => {
-    console.log("Rendered!!!");
     if (gameOver) {
       return;
     }
@@ -49,33 +48,34 @@ function App() {
     console.log(id);
   };
 
-  useEffect(() => {
-    const checkWinner = (board) => {
-      const boardsNotClicked = board.every((board) => board === null);
-      if (boardsNotClicked) {
+  const checkWinner = (board) => {
+    const boardsNotClicked = board.every((board) => board === null);
+    if (boardsNotClicked) {
+      return;
+    }
+    console.log("Rendered!");
+    for (let i = 0; i < winningMoves.length; i++) {
+      const [a, b, c] = winningMoves[i];
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        console.log("Game over!");
+        if (board[a] === "X") {
+          setGameOver(true);
+          setResult("X wins the game!");
+        } else {
+          setGameOver(true);
+          setResult("O wins the game!");
+        }
         return;
       }
-      console.log("Rendered!");
-      for (let i = 0; i < winningMoves.length; i++) {
-        const [a, b, c] = winningMoves[i];
-        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-          console.log("Game over!");
-          if (board[a] === "X") {
-            setGameOver(true);
-            setResult("X wins the game!");
-          } else {
-            setGameOver(true);
-            setResult("O wins the game!");
-          }
-          return;
-        }
-      }
-      const boardIsFilled = board.every((board) => board !== null);
-      if (boardIsFilled) {
-        setGameOver(true);
-        setResult("Draw!!!");
-      }
-    };
+    }
+    const boardIsFilled = board.every((board) => board !== null);
+    if (boardIsFilled) {
+      setGameOver(true);
+      setResult("Draw!!!");
+    }
+  };
+
+  useEffect(() => {
     checkWinner(boards);
   }, [boards]);
 
